@@ -1,5 +1,4 @@
 import sys
-
 sys.stdin = open("input.txt", "rt")
 
 n, k = map(int, input().split())
@@ -15,4 +14,5 @@ for i in range(n):
 
 res = list(res)
 res.sort(reverse=True)
-print(res)
+print(res[k-1])
+
