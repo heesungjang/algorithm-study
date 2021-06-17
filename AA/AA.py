@@ -2,19 +2,31 @@ import sys
 
 sys.stdin = open("input.txt", "rt")
 
-
 n = int(input())
 
-filter_arr = [0] * (n+1)
-
-count = 0
-
-for i in range(2, n+1):
-    if filter_arr[i] == 0:
-        count += 1
-        for j in range(i, n+1, i):
-            filter_arr[j] = 1
-
-print(count)
+numbers = list(map(int, input().split()))
 
 
+def reverse(x):
+    res = 0
+    while x > 0:
+        tmp = x % 10
+        res = (res * 10) + tmp
+        x = x // 10
+    return res
+
+
+def is_prime(x):
+    if x == 1:
+        return False
+    for i in range(2, x//2+1):
+        if x%i ==0:
+            return False
+    else:
+        return True
+
+
+for num in numbers:
+    tmp = reverse(num)
+    if is_prime(tmp):
+        print(tmp, end=" ")
